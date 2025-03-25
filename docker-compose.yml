@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://backend:5000
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=mongodb://booksearch-db:27017/booksearch
+
+  db:
+    image: mongo:latest
+    container_name: booksearch-db
+    volumes:
+      - D:\Microservice\WebBookJWT\data\db:/data/db
+    ports:
+      - "27017:27017"
+    restart: no
