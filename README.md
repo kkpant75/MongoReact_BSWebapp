@@ -1,4 +1,4 @@
-# Dockerizing and Running a Full-Stack React and Node.js App for Book Seaech Along With MongoDB
+# Dockerizing and Running a Full-Stack React and Node.js App for Book Search Along With MongoDB
 
 Develop Dokerized Web App Using MongoDB as BackEnd Storage 
 
@@ -143,9 +143,10 @@ services:
 - *Backend service: Built from the backend/ directory, exposed on port 5000.*
  
  
-# Step 5: Build and Run the Application Using Docker Compose
+# Step 5:Connect Mongo DB Using Mongo Shell And Load your Test Data
 
 Download [Mongoshell](https://www.mongodb.com/try/download/shell) and insert data as per below details
+
 ```
 use booksearch
 
@@ -200,16 +201,16 @@ db.dropDatabase();
 ```
 ***The frontend service depends on the backend service, meaning it will wait for the backend to be ready before starting.***
 
-# Step 5: Build and Run the Application Using Docker Compose
+# Step 6: Build and Run the Application Using Docker Compose
 
-## 5.1: Build Docker Images
+## 6.1: Build Docker Images
 To build the Docker images for both the frontend and backend, run the following command from the root of the project (where the docker-compose.yml file is located):
 
 - **docker-compose up --build**
 
 *This command will read the docker-compose.yml file, build the images for both the frontend and backend, and start the containers. The --build flag ensures that Docker will rebuild the images if there are any changes in the Dockerfiles or project code.*
 
-## 5.2: Access the Application
+## 6.2: Access the Application
 Once the containers are up and running, the application will be accessible via:
 
 - **Frontend: http://localhost:3000**
@@ -218,7 +219,7 @@ Once the containers are up and running, the application will be accessible via:
 
 The frontend will be able to send requests to the backend at http://localhost:5000/search?q=query.
 
-## 5.3: View Logs
+## 6.3: View Logs
 To view logs of the running containers, you can use:
 
 - **docker-compose logs**
@@ -228,20 +229,20 @@ To view logs of the running containers, you can use:
  - **docker-compose logs frontend**
  - **docker-compose logs backend**
 
-# Step 6: Stopping the Containers
+# Step 7: Stopping the Containers
 Once you're done working with the application, you can stop the running containers by using the following command:
 
 - **docker-compose down**
 
 This will stop and remove the containers, networks, and volumes associated with the application.
 
-# Step 7: Additional Docker Commands
-## 7.1: Rebuild Docker Images
+# Step 8: Additional Docker Commands
+## 8.1: Rebuild Docker Images
 If you make changes to the Dockerfiles or application code and want to rebuild the images, run:
 
 - **docker-compose up --build**
 
-## 7.2: Running Containers in Detached Mode
+## 8.2: Running Containers in Detached Mode
 If you prefer to run the containers in the background (detached mode), use the following command:
 
 - **docker-compose up -d**
